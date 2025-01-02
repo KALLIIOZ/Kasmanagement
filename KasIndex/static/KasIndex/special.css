@@ -1,0 +1,20 @@
+#special-talents {
+    justify-content: center;
+    display: flex;
+    margin: 20px;
+}
+
+img {
+    background-color: black;
+}
+
+.row-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.row-2 {
+    display: none;
+}
