@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(to bottom right, black, white);
+    margin: 0;
+    font-family: Arial, sans-serif; /* Puedes cambiar la fuente si lo deseas */
+}
+
+#myVideo {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: black;
+}
