@@ -4,10 +4,6 @@
     margin: 20px;
 }
 
-img {
-    background-color: black;
-}
-
 .row-1 {
     display: flex;
     justify-content: space-between;
