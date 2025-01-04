@@ -1,38 +1,39 @@
 from django.contrib import admin
-from .models import Actor, Series, Peliculas, Television, Fotos, Curriculum, Demo, Social
+from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social
 
 # Register your models here.
 
-class SeriesInline(admin.TabularInline):
-    model = Series
+class SeriesInline(admin.StackedInline):
+    model = Serie
     extra = 1
     fields = ('nombre', 'portada', 'plataforma',)
 
-class PeliculasInline(admin.TabularInline):
-    model = Peliculas
+class PeliculasInline(admin.StackedInline):
+    model = Pelicula
     extra = 1
     fields = ('nombre', 'portada', 'plataforma',)
 
-class TelevisionInline(admin.TabularInline):
+class TelevisionInline(admin.StackedInline):
     model = Television
     extra = 1
     fields = ('nombre', 'portada', 'televisora',)
 
-class FotosInline(admin.TabularInline):
-    model = Fotos
+class FotosInline(admin.StackedInline):
+    model = Foto
     extra = 1
     fields = ('imagen',)
 
-class CurriculumInline(admin.TabularInline):
+class CurriculumInline(admin.StackedInline):
     model = Curriculum
     extra = 1
     fields = ('archivo',)
 
-class DemoInline(admin.TabularInline):
+class DemoInline(admin.StackedInline):
     model = Demo
+    extra = 1
     fields = ('video',)
 
-class SocialInline(admin.TabularInline):
+class SocialInline(admin.StackedInline):
     model = Social
     extra = 1
     fields = ('facebook', 'instagram', 'twitter', 'tiktok',)
