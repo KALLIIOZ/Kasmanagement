@@ -8,13 +8,13 @@ class Actor(models.Model):
     especial = models.BooleanField(default=False)
 
 
-class Series(models.Model):
+class Serie(models.Model):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='series')
     nombre = models.CharField(max_length=100)
     portada = models.ImageField(upload_to="actor/series/")
     plataforma = models.ImageField(max_length=50)
 
-class Peliculas(models.Model):
+class Pelicula(models.Model):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='peliculas')
     nombre = models.CharField(max_length=100)
     portada = models.ImageField(upload_to="actor/peliculas/")
@@ -26,7 +26,7 @@ class Television(models.Model):
     portada = models.ImageField(upload_to="actor/television/")
     televisora = models.ImageField(max_length=50)
 
-class Fotos(models.Model):
+class Foto(models.Model):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='fotos')
     imagen = models.ImageField(upload_to="actor/imagenes/")
 
@@ -36,10 +36,10 @@ class Curriculum(models.Model):
 
 class Demo(models.Model):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='demo')
-    video = models.FileField(upload_to="actor/video/")
+    video = models.FileField(upload_to="actor/video/", null=False)
 
 class Social(models.Model):
-    Actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='social')
+    actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='social')
     facebook = models.URLField(blank=True, null=False)
     instagram = models.URLField(blank=True, null=False)
     twitter = models.URLField(blank=True, null=False)
