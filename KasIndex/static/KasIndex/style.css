@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to bottom right, black, white);
+    /* background: linear-gradient(to bottom right, black, white); */
+    background-color: gray;
     margin: 0;
     font-family: Arial, sans-serif; /* Puedes cambiar la fuente si lo deseas */
 }
