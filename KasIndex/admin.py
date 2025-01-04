@@ -3,43 +3,43 @@ from .models import Actor, Series, Peliculas, Television, Fotos, Curriculum, Dem
 
 # Register your models here.
 
-class SeriesInline(admin.ModelAdmin):
+class SeriesInline(admin.TabularInline):
     model = Series
     extra = 1
-    fields = ('nombre', 'portada', 'plataforma')
+    fields = ('nombre', 'portada', 'plataforma',)
 
-class PeliculasInline(admin.ModelAdmin):
+class PeliculasInline(admin.TabularInline):
     model = Peliculas
     extra = 1
-    fields = ('nombre', 'portada', 'plataforma')
+    fields = ('nombre', 'portada', 'plataforma',)
 
-class TelevisionInline(admin.ModelAdmin):
+class TelevisionInline(admin.TabularInline):
     model = Television
     extra = 1
-    fields = ('nombre', 'portada', 'plataforma')
+    fields = ('nombre', 'portada', 'televisora',)
 
-class FotosInline(admin.ModelAdmin):
+class FotosInline(admin.TabularInline):
     model = Fotos
     extra = 1
-    fields = ('imagen')
+    fields = ('imagen',)
 
-class CurriculumInline(admin.ModelAdmin):
+class CurriculumInline(admin.TabularInline):
     model = Curriculum
     extra = 1
-    fields = ('archivo')
+    fields = ('archivo',)
 
-class DemoInline(admin.ModelAdmin):
+class DemoInline(admin.TabularInline):
     model = Demo
-    fields = 'video'
+    fields = ('video',)
 
-class SocialInline(admin.ModelAdmin):
+class SocialInline(admin.TabularInline):
     model = Social
     extra = 1
-    fields = ('facebook', 'instagram', 'twitter', 'tiktok')
+    fields = ('facebook', 'instagram', 'twitter', 'tiktok',)
 
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'foto', 'biografia')
-    search_fields = ('nombre')
+    list_display = ('nombre', 'foto', 'biografia',)
+    search_fields = ('nombre',)
     inlines = [SeriesInline, PeliculasInline, TelevisionInline, FotosInline, CurriculumInline, DemoInline, SocialInline]
 
 
