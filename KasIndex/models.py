@@ -5,6 +5,7 @@ class Actor(models.Model):
     nombre = models.CharField(max_length=50)
     foto = models.ImageField(upload_to="actor/")
     biografia = models.TextField()
+    especial = models.BooleanField(default=False)
 
 
 class Series(models.Model):

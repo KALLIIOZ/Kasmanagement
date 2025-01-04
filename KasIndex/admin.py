@@ -38,7 +38,7 @@ class SocialInline(admin.TabularInline):
     fields = ('facebook', 'instagram', 'twitter', 'tiktok',)
 
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'foto', 'biografia',)
+    list_display = ('nombre', 'foto', 'biografia', 'especial',)
     search_fields = ('nombre',)
     inlines = [SeriesInline, PeliculasInline, TelevisionInline, FotosInline, CurriculumInline, DemoInline, SocialInline]
 
