@@ -1,0 +1,10 @@
+.clients-logos {
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.clients-logos img {
+    margin: 20px;
+}
