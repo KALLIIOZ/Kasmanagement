@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAS Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'KasIndex/video.css' %}">
+    <link rel="stylesheet" href="{% static 'KasIndex/special.css' %}">
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <section id="video">
+        <video id="myVideo" autoplay muted playsinline>
+            <source src="#" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </section>
+    <section id="special-talent">
+        {% for actor in actores_especiales %}
+            <div class="actor">
+                <img src="{{ actor.foto.url }}" alt="{{ actor.nombre }}" class="actor-image">
+            </div>
+        {% endfor %}
+    </section>
+</body>
+</html>
