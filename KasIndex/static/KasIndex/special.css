@@ -1,0 +1,24 @@
+#special-talent {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.row-1 {
+    display: flex;
+    gap: 50px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Permite que los elementos salten de línea si es necesario */
+}
+
+.row-1 div {
+    text-align: center; /* Asegura que el contenido dentro de cada div esté centrado */
+}
+
+.actor-image {
+    max-width: 150px; /* Para que la imagen no exceda el ancho de su contenedor */
+    height: 200px; /* Mantiene las proporciones originales */
+    display: block; /* Evita que las imágenes tengan espacio extra alrededor */
+    margin: 0 auto; /* Centra la imagen dentro de su contenedor */
+    border-radius: 8px; /* (Opcional) Bordes redondeados para un mejor diseño */
+    margin-right: 50px;
+    margin-left: 50px;
+}
