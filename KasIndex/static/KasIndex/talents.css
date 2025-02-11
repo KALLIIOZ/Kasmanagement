@@ -1,0 +1,44 @@
+#talents {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas */ /* Espacio entre actores */
+    justify-items: center;
+    margin-top: 74px;
+}
+
+
+.Nactor-image, p {
+    max-width: 150px; /* Para que la imagen no exceda el ancho de su contenedor */
+    height: 200px; /* Mantiene las proporciones originales */
+    display: block; /* Evita que las imágenes tengan espacio extra alrededor */
+    margin: 0 auto; /* Centra la imagen dentro de su contenedor */
+    border-radius: 8px; /* (Opcional) Bordes redondeados para un mejor diseño */
+    margin-right: 50px;
+    margin-left: 50px;
+    object-fit:cover;
+    color: white;
+}
+@media (max-width: 1024px) {
+    #talents {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #talents {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .Nactor-image, p {
+        max-width: 120px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    #talents {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Nactor-image, p {
+        max-width: 100px;
+        height: 160px;
+    }
+}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social
+from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social, Client, Icon
 
 # Register your models here.
 
@@ -43,5 +43,13 @@ class ActorAdmin(admin.ModelAdmin):
     search_fields = ('nombre',)
     inlines = [SeriesInline, PeliculasInline, TelevisionInline, FotosInline, CurriculumInline, DemoInline, SocialInline]
 
+class ClientsAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'foto',)
+
+class IconsAdmin(admin.ModelAdmin):
+    list_display = ('nombre','foto',)
+
 
 admin.site.register(Actor, ActorAdmin)
+admin.site.register(Client, ClientsAdmin)
+admin.site.register(Icon, IconsAdmin)

@@ -1,0 +1,31 @@
+#client-bar {
+    display: flex;
+    overflow-x: auto; /* Permite desplazamiento horizontal */
+    scroll-snap-type: x mandatory; /* Suaviza el desplazamiento */
+    gap: 20px;
+    justify-content: center; /* Centra los clientes */
+    align-items: center;
+    padding: 20px;
+    white-space: nowrap; /* Evita que los elementos salten de línea */
+    margin-top: 50px;
+    
+    background-color: black;
+    position: relative; /* Asegura que respete el flujo del documento */
+    border-radius: 50px;
+}
+
+.client {
+    display: flex;
+    margin-top: 70px;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: center; /* Asegura que cada cliente se alinee en el centro */
+    min-width: 120px; /* Ajusta el tamaño mínimo para que no sean demasiado pequeños */
+}
+
+.client-image {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}

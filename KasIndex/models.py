@@ -39,8 +39,17 @@ class Demo(models.Model):
     video = models.FileField(upload_to="actor/video/", null=False)
 
 class Social(models.Model):
-    actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='social')
-    facebook = models.URLField(blank=True, null=False)
-    instagram = models.URLField(blank=True, null=False)
-    twitter = models.URLField(blank=True, null=False)
-    tiktok = models.URLField(blank=True, null=False)
+    actor = models.OneToOneField(Actor, on_delete=models.CASCADE, related_name='social')
+    facebook = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    tiktok = models.URLField(blank=True, null=True)
+
+class Icon(models.Model):
+    nombre = models.CharField(max_length=30)
+    foto = models.ImageField(upload_to="icons/")
+    social = models.ForeignKey(Social, on_delete=models.CASCADE, related_name='icons')
+
+class Client(models.Model):
+    nombre = models.CharField(max_length=50)
+    foto = models.ImageField(upload_to="clientes/")

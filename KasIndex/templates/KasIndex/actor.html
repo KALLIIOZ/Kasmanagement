@@ -1,20 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ actor.nombre }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .info {
+            width: 50%;
+            background: linear-gradient(to right, white, black);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+        .info h1 {
+            font-style: italic;
+        }
+        .info .role {
+            color: purple;
+            font-weight: bold;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .photo {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: black;
+            padding: 15px 0;
+        }
+        .footer img {
+            width: 30px;
+        }
+        .content-section {
+            display: none;
+            background: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <section>
-        <div></div>
-        <div></div>
-    </section>
-    <section>
-        <div></div>
-    </section>
-    <section>
-
-    </section>
+    <div class="container">
+        <div class="info">
+            <h1>{{ actor.nombre }}</h1>
+            <div class="social-icons">
+                <a href="{{ actor.social.facebook }}" target="_blank"><img src="{{ icon.facebook }}" alt="Facebook"></a>
+                <a href="{{ actor.social.instagram }}" target="_blank"><img src="{{ icon.instagram }}" alt="Instagram"></a>
+                <a href="{{ actor.social.twitter }}" target="_blank"><img src="{{ icon.twitter }}" alt="Twitter"></a>
+                <a href="{{ actor.social.tiktok }}" target="_blank"><img src="{{ icon.tiktok }}" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="{{ actor.foto.url }}" alt="{{ actor.nombre }}">
+        </div>
+    </div>
+    <div class="footer">
+        <a href="#" onclick="showSection('profile')"><img src="{{ icons.profile.foto.url }}" alt="Perfil"></a>
+        <a href="#" onclick="showSection('videos')"><img src="{{ icons.video.foto.url }}" alt="Videos"></a>
+        <a href="#" onclick="showSection('screen')"><img src="{{ icons.screen.foto.url }}" alt="Pantalla"></a>
+        <a href="{{ actor.curriculum.archivo.url }}" target="_blank"><img src="{{ icons.pdf.foto.url }}" alt="PDF"></a>
+    </div>
+    <div id="profile" class="content-section">
+        <p>Información del perfil de {{ actor.nombre }}.</p>
+    </div>
+    <div id="videos" class="content-section">
+        <p>Videos de {{ actor.nombre }}.</p>
+    </div>
+    <div id="screen" class="content-section">
+        <p>Proyectos en los que ha participado {{ actor.nombre }}.</p>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
