@@ -1,0 +1,71 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a1a;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.1em;
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 500px;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(179, 0, 0);
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    color: black;
+}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.top-bar img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-container img {
+    width: 300px;  /* Adjust this value to your logo's desired size */
+    height: auto;
+    border-radius: 60%;
+}
