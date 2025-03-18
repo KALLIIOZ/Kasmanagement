@@ -1,5 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social, Client, Icon
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social, Client
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings
+
 
 def index_view(request):
     actores_especiales = Actor.objects.filter(especial=True)  # Obtén solo los actores especiales
@@ -24,7 +28,6 @@ def actor_detail(request, nombre):
     curriculum = Curriculum.objects.filter(actor=actor).first()
     demo = Demo.objects.filter(actor=actor).first()
     social = getattr(actor, 'social', None)
-    icons = Icon.objects.filter(social=social)
 
     context = {
         'actor': actor,
@@ -35,11 +38,42 @@ def actor_detail(request, nombre):
         'curriculum': curriculum,
         'demo': demo,
         'social': social,
-        'icons': icons,
     }
 
     return render(request, 'Kasindex/actor.html', context)
 
 
-def contact_view(request):
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        actor = request.POST.get('actor')
+
+        # Email content
+        subject = f'New Contact Request for {actor}'
+        message = f'''
+        Contact Details:
+        Name: {name}
+        Phone: {phone}
+        Email: {email}
+        Interested in Actor: {actor}
+        '''
+        
+        try:
+            # Send email
+            send_mail(
+                subject=subject,
+                message=message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER],  # Send to yourself or specific email
+                fail_silently=False,
+            )
+            messages.success(request, '¡Mensaje enviado exitosamente!')
+            return redirect('contact')
+        except Exception as e:
+            messages.error(request, 'Hubo un error al enviar el mensaje. Por favor, intente nuevamente.')
+            return redirect('contact')
+
     return render(request, 'KasIndex/contact_us.html')

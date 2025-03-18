@@ -76,17 +76,33 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "mydatabase",
+#         "USER": "postgres",
+#         "PASSWORD": "fortaleza",
+#         "HOST": "database-1.cz6mmie26jb4.us-east-2.rds.amazonaws.com",
+#         "PORT": "5432"
+#     }
+# }
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mydatabase",
-        "USER": "postgres",
-        "PASSWORD": "fortaleza",
-        "HOST": "database-1.cz6mmie26jb4.us-east-2.rds.amazonaws.com",
-        "PORT": "5432"
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "mydatabase",
+#         "USER": "postgres",
+#         "PASSWORD": "fortaleza",
+#         "HOST": "database-1.ct8ysg862o0i.us-east-2.rds.amazonaws.com",
+#         "PORT": "5432"
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -130,3 +146,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "kasmanagement458@gmail.com"#sender's email-id
+EMAIL_HOST_PASSWORD = "mcur gucq dbhq iaot"#password associated with above email-id (not the regular password)

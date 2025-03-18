@@ -4,8 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 500px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(179, 0, 0);
+            color: white;
+            font-size: 1.1em;
+            cursor: pointer;
+            color: black;
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+        .top-bar img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 300px;  /* Adjust this value to your logo's desired size */
+            height: auto;
+            border-radius: 60%;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="top-bar">
+        <a href="{% url 'index' %}">
+            {% load static %}
+            <img src="{% static 'KasIndex/images/home2.png' %}" alt="Logo">
+        </a>
+    </div>
+    <div class="container">
+        <div class="logo-container">
+            {% load static %}
+            <img src="{% static 'KasIndex/images/logo2.png' %}" alt="Logo Principal">
+        </div>
+        <form method="POST" action="{% url 'contact_us' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Nombre" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Teléfono</label>
+                <input type="number" name="phone" id="phone" placeholder="Telefono" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" name="email" id="email" placeholder="anonimo@gmail.com" required>
+            </div>
+            <div class="input-group">
+                <label for="actor">Actor</label>
+                <input type="text" name="actor" id="actor" placeholder="Actor" required>
+            </div>
+            <div class="button">
+                <button type="submit" title="Enviar">Enviar</button>
+            </div>
+        </form>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>

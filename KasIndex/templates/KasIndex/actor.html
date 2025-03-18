@@ -1,113 +1,319 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ actor.nombre }}</title>
+    <title>{{ actor.name }} - Actor Profile</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
+            background-color: #1a1a1a;
+            color: white;
             font-family: Arial, sans-serif;
         }
-        .container {
-            display: flex;
-            width: 100%;
-            height: 100vh;
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        .info {
-            width: 50%;
-            background: linear-gradient(to right, white, black);
+
+        .profile-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-photo {
+            flex: 0 0 300px;
+        }
+
+        .profile-photo img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+        .profile-info h1{
+            font-size: 3rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .profile-info p{
+            font-size: 1rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            width: 60%;
+        }
+
+        .download-resume {
+            background-color: #ff0000;
             color: white;
+            padding: 0.8rem 1.5rem;
+            margin-left: 55px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .career-tabs {
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
+
+        .tab-buttons {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
-        .info h1 {
-            font-style: italic;
-        }
-        .info .role {
-            color: purple;
+
+        .tab-button {
+            background-color: #4a4a4a;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 10px;
             font-weight: bold;
         }
-        .social-icons {
-            margin-top: 20px;
+
+        .tab-button:hover {
+            background-color: white;
+            color: #1a1a1a;
         }
-        .social-icons a img {
-            width: 30px;
-            margin-right: 10px;
+
+        .tab-button.active {
+            background-color: white;
+            color: #1a1a1a;
         }
-        .photo {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            object-fit: cover;
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
         }
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            background: black;
-            padding: 15px 0;
-        }
-        .footer img {
-            width: 30px;
-        }
-        .content-section {
-            display: none;
-            background: white;
-            padding: 20px;
+
+        .career-item {
             text-align: center;
+        }
+
+        .career-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+        }
+        .contact-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: #cc0000;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        #resume-png {
+            width: 30px;
+            height: 30px;
+            border-radius: 0;
+        }
+        #email-png {
+            width: 30px;
+            height: 30px;
+            border-radius: 0;
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+        .top-bar img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="info">
-            <h1>{{ actor.nombre }}</h1>
-            <div class="social-icons">
-                <a href="{{ actor.social.facebook }}" target="_blank"><img src="{{ icon.facebook }}" alt="Facebook"></a>
-                <a href="{{ actor.social.instagram }}" target="_blank"><img src="{{ icon.instagram }}" alt="Instagram"></a>
-                <a href="{{ actor.social.twitter }}" target="_blank"><img src="{{ icon.twitter }}" alt="Twitter"></a>
-                <a href="{{ actor.social.tiktok }}" target="_blank"><img src="{{ icon.tiktok }}" alt="TikTok"></a>
+    <div class="top-bar">
+        <a href="{% url 'index' %}">
+            {% load static %}
+            <img src="{% static 'KasIndex/images/home2.png' %}" alt="Logo">
+        </a>
+    </div>
+    <div class="profile-container">
+        <section class="profile-header">
+            <div class="profile-info">
+                <h1>{{ actor.nombre }}</h1>
+                <p>{{ actor.biografia }}</p>
             </div>
-        </div>
-        <div class="photo">
-            <img src="{{ actor.foto.url }}" alt="{{ actor.nombre }}">
-        </div>
+            <div class="profile-photo">
+                <img src="{{ actor.foto.url }}" alt="{{ actor.nombre }}">
+                <div class="button-container">
+                    <a href="{{ curriculum.archivo.url }}" class="download-resume" download>
+                        {% load static %}
+                        <img id="resume-png" src="{% static 'KasIndex/images/resume.png' %}" alt="resume">
+                    </a>
+                    <a href="{% url 'contact_us' %}" class="contact-button">
+                        {% load static %}
+                        <img id="email-png" src="{% static 'KasIndex/images/email.png' %}" alt="email">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="career-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="photos">Fotos</button>
+                <button class="tab-button" data-tab="movies">Movies</button>
+                <button class="tab-button" data-tab="television">Television</button>
+                <button class="tab-button" data-tab="series">Series</button>
+                <button class="tab-button" data-tab="demo">Demo</button>
+            </div>
+
+            <div class="career-grid" id="photos">
+                {% for foto in actor.fotos.all %}
+                <div class="career-item">
+                    <img src="{{ foto.imagen.url }}" alt="Foto Actor">
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="career-grid" id="movies" style="display: none;">
+                {% for peliculas in peliculas.all %}
+                <div class="career-item">
+                    <img src="{{ peliculas.portada.url }}" alt="{{ peliculas.nombre }}">
+                    <p>{{ peliculas.nombre }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="career-grid" id="series" style="display: none;">
+                {% for series in series.all %}
+                <div class="career-item">
+                    <img src="{{ series.portada.url }}" alt="{{ series.nombre }}">
+                    <p>{{ series.nombre }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="career-grid" id="televisiones" style="display: none;">
+                {% for televisions in televisiones.all %}
+                <div class="career-item">
+                    <img src="{{ televisiones.portada.url }}" alt="{{ televisiones.nombre }}">
+                    <p>{{ televisiones.nombre }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Similar sections for television, series, theater, and demo -->
+        </section>
     </div>
-    <div class="footer">
-        <a href="#" onclick="showSection('profile')"><img src="{{ icons.profile.foto.url }}" alt="Perfil"></a>
-        <a href="#" onclick="showSection('videos')"><img src="{{ icons.video.foto.url }}" alt="Videos"></a>
-        <a href="#" onclick="showSection('screen')"><img src="{{ icons.screen.foto.url }}" alt="Pantalla"></a>
-        <a href="{{ actor.curriculum.archivo.url }}" target="_blank"><img src="{{ icons.pdf.foto.url }}" alt="PDF"></a>
-    </div>
-    <div id="profile" class="content-section">
-        <p>Información del perfil de {{ actor.nombre }}.</p>
-    </div>
-    <div id="videos" class="content-section">
-        <p>Videos de {{ actor.nombre }}.</p>
-    </div>
-    <div id="screen" class="content-section">
-        <p>Proyectos en los que ha participado {{ actor.nombre }}.</p>
-    </div>
+
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all grids
+                document.querySelectorAll('.career-grid').forEach(grid => {
+                    grid.style.display = 'none';
+                });
+                
+                // Show selected grid
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).style.display = 'grid';
             });
-            document.getElementById(sectionId).style.display = 'block';
+        });
+    </script>
+    <script>
+        // Function to check if a grid has any items
+        function hideEmptyTabs() {
+            const grids = {
+                'photos': document.querySelectorAll('#photos .career-item').length,
+                'movies': document.querySelectorAll('#movies .career-item').length,
+                'television': document.querySelectorAll('#televisiones .career-item').length,
+                'series': document.querySelectorAll('#series .career-item').length,
+                'demo': document.querySelectorAll('#demo .career-item').length
+            };
+    
+            // Hide tabs with no items
+            Object.entries(grids).forEach(([tabName, itemCount]) => {
+                const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+                if (itemCount === 0 && tabButton) {
+                    tabButton.style.display = 'none';
+                }
+            });
+    
+            // Set the first visible tab as active
+            const firstVisibleTab = document.querySelector('.tab-button:not([style*="display: none"])');
+            if (firstVisibleTab) {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to first visible button
+                firstVisibleTab.classList.add('active');
+                
+                // Hide all grids
+                document.querySelectorAll('.career-grid').forEach(grid => {
+                    grid.style.display = 'none';
+                });
+                
+                // Show first visible grid
+                const firstTabId = firstVisibleTab.getAttribute('data-tab');
+                document.getElementById(firstTabId).style.display = 'grid';
+            }
         }
+    
+        // Call the function when the page loads
+        window.addEventListener('load', hideEmptyTabs);
+    
+        // Existing tab click event listeners
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                button.classList.add('active');
+                
+                document.querySelectorAll('.career-grid').forEach(grid => {
+                    grid.style.display = 'none';
+                });
+                
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).style.display = 'grid';
+            });
+        });
     </script>
 </body>
 </html>

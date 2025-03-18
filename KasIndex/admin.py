@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social, Client, Icon
+from .models import Actor, Serie, Pelicula, Television, Foto, Curriculum, Demo, Social, Client
 
 # Register your models here.
 
@@ -46,10 +46,6 @@ class ActorAdmin(admin.ModelAdmin):
 class ClientsAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'foto',)
 
-class IconsAdmin(admin.ModelAdmin):
-    list_display = ('nombre','foto',)
-
 
 admin.site.register(Actor, ActorAdmin)
 admin.site.register(Client, ClientsAdmin)
-admin.site.register(Icon, IconsAdmin)

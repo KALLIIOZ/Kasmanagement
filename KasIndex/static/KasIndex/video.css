@@ -11,21 +11,7 @@
 #myVideo {
     background-color: black;
     width: 100%;
-    max-width: 98%;
+    max-width: 100%;
     height: auto;
     border-radius: 50px;
-}
-
-@media (max-width: 768px) {
-    #myVideo {
-        border-radius: 30px;
-        width: 95%;
-    }
-}
-
-@media (max-width: 480px) {
-    #myVideo {
-        border-radius: 20px;
-        width: 90%;
-    }
 }
